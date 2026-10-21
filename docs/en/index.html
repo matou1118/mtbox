@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>MTBOX · Android video &amp; local-music toolbox</title>
+<meta name="description" content="MTBOX — an Android video and local-music toolbox secondary-developed from FongMi/TV under GPL-3.0. The full package is open source: music engine, lyric panel, transparent audio path and hardening included. Local decoding, works offline.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://matou1118.github.io/mtbox/en/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MTBOX">
+<meta property="og:title" content="MTBOX · Android video &amp; local-music toolbox">
+<meta property="og:description" content="Secondary-developed from FongMi/TV under GPL-3.0. The full package is open source.">
+<meta property="og:url" content="https://matou1118.github.io/mtbox/en/">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="https://github.com/matou1118/mtbox/raw/main/docs/images/mtbox-1.jpg">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="../">
+      <span class="brand-mark">MT</span>
+      <span>MTBOX</span>
+    </a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#features">Features</a>
+      <a href="#screens">Screens</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#build">Build</a>
+      <a href="#faq">FAQ</a>
+      <a href="#legal">Disclaimer</a>
+      <a class="lang" href="../" hreflang="zh-CN">中文</a>
+    </nav>
+    <a class="btn" href="https://github.com/matou1118/mtbox">GitHub</a>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="wrap hero-in">
+    <div>
+      <p class="eyebrow">Android · GPL-3.0 · secondary-developed from FongMi/TV</p>
+      <h1>MTBOX<span class="h1-sub">Android video &amp; local-music toolbox</span></h1>
+      <p class="lede">
+        Secondary-developed from the open-source FongMi/TV project (GPL-3.0). Package
+        <code>com.matou.mtbox</code>, version 6.6.19. The whole package — baseline, patches, music
+        engine and build scripts — is open source. Local decoding, works offline, no cloud account.
+      </p>
+      <div class="hero-cta">
+        <a class="btn solid" href="https://github.com/matou1118/mtbox/releases/download/v6.6.19/mtbox-music-signed.apk">Download v6.6.19</a>
+        <a class="btn" href="https://github.com/matou1118/mtbox">View the source</a>
+        <a class="btn" href="https://ttread.cn/en/works/mtbox/">Official project page</a>
+      </div>
+      <div class="chips">
+        <span class="chip">Version 6.6.19</span>
+        <span class="chip">GPL-3.0</span>
+        <span class="chip">com.matou.mtbox</span>
+        <span class="chip">Android 7.0+</span>
+        <span class="chip">No content sources</span>
+      </div>
+    </div>
+
+    <div class="term">
+      <div class="term-bar"><i></i><i></i><i></i><span>build.ps1</span></div>
+      <pre><b>#</b> 1) resource ids shift, so regenerate R.java every round
+powershell -File javainject\genr.ps1 -Apk app.apk
+
+<b>#</b> 2) compile + inject + sign (apktool runs twice)
+powershell -File javainject\build.ps1 -Tag music
+
+<b>→</b> mtbox-music-signed.apk</pre>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="about">
+  <div class="wrap">
+    <div class="sec-hd">
+      <span class="sec-no">About</span>
+      <h2>What it is</h2>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <h3>Two halves</h3>
+        <p>The decompiled baseline (FongMi/TV 5.6.1 → com.matou.mtbox 6.6.19) plus every smali
+           patch, with apktool run twice to pin the resource ids down.</p>
+      </div>
+      <div class="card">
+        <h3>The music engine is injected</h3>
+        <p>Thirteen Java files through javac and d8 produce a classes4.dex, dropped into
+           work_fong/unknown and copied verbatim into the APK — no smali round-trip.</p>
+      </div>
+      <div class="card">
+        <h3>A transparent audio path</h3>
+        <p>Equalizer and BassBoost only. LoudnessEnhancer stays off, setPlaybackParams is never
+           called at 1.0×, and lossless sources stay on the native path.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="features">
+  <div class="wrap">
+    <div class="sec-hd">
+      <span class="sec-no">Features</span>
+      <h2>What it does</h2>
+      <p>Everything below ships in the published package.</p>
+    </div>
+    <div class="grid">
+      <div class="card"><span class="ftn">01</span><h3>Covers non-HarmonyOS devices</h3>
+        <p>A separate Android package next to TTBOX, so the Android projector or the old tablet in
+           the house can play too.</p></div>
+      <div class="card"><span class="ftn">02</span><h3>Self-held signing key</h3>
+        <p>Signed with a keystore I keep myself, verifiable before install, never re-signed by a
+           third party.</p></div>
+      <div class="card"><span class="ftn">03</span><h3>Local import, straight to playback</h3>
+        <p>No cloud account, no sign-in. Import local media and it plays; the network can be off
+           entirely.</p></div>
+      <div class="card"><span class="ftn">04</span><h3>Open source under GPL-3.0</h3>
+        <p>The whole package — music engine and build scripts included — is on GitHub, and the
+           FongMi/TV baseline is GPL-3.0 as well.</p></div>
+      <div class="card"><span class="ftn">05</span><h3>Transparent audio path</h3>
+        <p>Equalizer and BassBoost only; LoudnessEnhancer is never enabled, setPlaybackParams is
+           untouched at 1.0×, and lossless sources play through the native path.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="screens">
+  <div class="wrap">
+    <div class="sec-hd">
+      <span class="sec-no">Screens</span>
+      <h2>In the interface</h2>
+    </div>
+    <div class="shots">
+      <figure>
+        <img src="../images/mtbox-1.jpg" alt="MTBOX local music, track list" loading="lazy" decoding="async">
+        <figcaption>Local music · track list</figcaption>
+      </figure>
+      <figure>
+        <img src="../images/mtbox-2.jpg" alt="MTBOX lyric panel, word-synced" loading="lazy" decoding="async">
+        <figcaption>Lyrics panel · word-synced</figcaption>
+      </figure>
+      <figure>
+        <img src="../images/mtbox-3.jpg" alt="MTBOX theme and playback" loading="lazy" decoding="async">
+        <figcaption>Theme and playback</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="architecture">
+  <div class="wrap">
+    <div class="sec-hd">
+      <span class="sec-no">Architecture</span>
+      <h2>How the package is assembled</h2>
+      <p>Two halves — the decompiled baseline plus the injected music engine — with apktool run
+         twice to pin the resource ids down.</p>
+    </div>
+    <div class="grid">
+      <div class="card"><h3>The work_fong baseline</h3>
+        <p>FongMi/TV 5.6.1 decompiled, package renamed to com.matou.mtbox, version bumped to
+           6.6.19 (versionCode 60619).</p></div>
+      <div class="card"><h3>smali patches</h3>
+        <p>Unified theming, the version display, fullscreen rotation and the security hardening all
+           live in smali, each one with a written-up plan.</p></div>
+      <div class="card"><h3>The javainject music engine</h3>
+        <p>Thirteen Java files through javac and d8 produce a classes4.dex, dropped into
+           work_fong/unknown and copied verbatim into the APK by apktool.</p></div>
+      <div class="card"><h3>R.java regeneration</h3>
+        <p>genr.ps1 assembles the resource id table from public.xml and an aapt2 dump. Touch res/
+           and every id shifts, which is why the build runs twice.</p></div>
+      <div class="card"><h3>The unknown directory</h3>
+        <p>apktool copies everything under work_fong/unknown into the APK as-is, and ART loads
+           classes 1 through 4.dex together.</p></div>
+      <div class="card"><h3>Signing</h3>
+        <p>apksigner signs v2/v3 and verifies; the keystore stays with me and out of the
+           repository.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="build">
+  <div class="wrap">
+    <div class="sec-hd">
+      <span class="sec-no">Build</span>
+      <h2>Building it locally</h2>
+      <p>Four steps, and the order matters.</p>
+    </div>
+    <ol class="steps">
+      <li><span class="sn">01</span><div><h3>Generate R.java</h3>
+        <p>powershell -File javainject/genr.ps1 -Apk &lt;freshly built .apk&gt;. Resource ids shift,
+           so this runs on every round.</p></div></li>
+      <li><span class="sn">02</span><div><h3>Set the signing passwords</h3>
+        <p>Export MTBOX_KS_PASS and MTBOX_KEY_PASS. You generate your own keystore.</p></div></li>
+      <li><span class="sn">03</span><div><h3>Package</h3>
+        <p>powershell -File javainject/build.ps1 -Tag music. apktool runs twice — do not skip
+           pass 1.</p></div></li>
+      <li><span class="sn">04</span><div><h3>Verify</h3>
+        <p>apksigner verify passes and the ids in R.java line up (tabSongs, musicList and the
+           rest) — that is what success looks like.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="sec-hd">
+      <span class="sec-no">Questions</span>
+      <h2>FAQ</h2>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>Why does apktool have to run twice?</summary>
+        <div>Touch res/ and aapt2 re-sorts the whole @+id table, while R.id is a compile-time
+          constant. Pass 1 captures the resource table and regenerates R.java; pass 2 packages the
+          same res. Only then do the two passes agree on the ids. Skip pass 1 and findViewById
+          returns somebody else's view — or null — and the app dies on the spot.</div>
+      </details>
+      <details>
+        <summary>Why not write the music engine in smali?</summary>
+        <div>Thirteen Java files go through javac and d8 into a classes4.dex, which goes straight
+          into work_fong/unknown — apktool copies that directory into the APK verbatim. It saves a
+          whole round of smali compilation and never touches a register.</div>
+      </details>
+      <details>
+        <summary>Does the sound effect chain distort anything?</summary>
+        <div>The chain is Equalizer plus BassBoost only; LoudnessEnhancer is disabled — it is a
+          dynamic loudness processor, not a gain, and it clips full-scale lossless sources. The
+          original preset is all-zero EQ plus zero bass, which is completely transparent.</div>
+      </details>
+      <details>
+        <summary>Can the lock screen and the car be controlled?</summary>
+        <div>Hardware media keys work: headset and car skip, play and pause are forwarded into the
+          container. The lock-screen and control-centre media cards do not appear — they depend on
+          the system querying the MediaSession, and container isolation blocks that. No fix exists
+          at the app layer.</div>
+      </details>
+      <details>
+        <summary>Why are no sources bundled?</summary>
+        <div>Deliberately. Every external subscription is configured by the user; the project ships
+          no content sources and no online parsing URLs.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="credits">
+  <div class="wrap">
+    <div class="sec-hd">
+      <span class="sec-no">Credits</span>
+      <h2>Upstream</h2>
+    </div>
+    <div class="box">
+      <ul>
+        <li><b><a href="https://github.com/FongMi/TV" target="_blank" rel="noopener">FongMi/TV</a></b>
+          <span> —— the baseline this project is built on, GPL-3.0</span></li>
+        <li><b><a href="https://github.com/mpv-player/mpv" target="_blank" rel="noopener">mpv</a></b>
+          <span> —— playback core, GPL-2.0-or-later</span></li>
+        <li><b><a href="https://ffmpeg.org/" target="_blank" rel="noopener">FFmpeg</a></b>
+          <span> —— codecs, LGPL / GPL</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="legal">
+  <div class="wrap">
+    <div class="sec-hd">
+      <span class="sec-no">Legal</span>
+      <h2>Disclaimer</h2>
+    </div>
+    <div class="box">
+      <ol>
+        <li>This project is a secondary development of the open-source FongMi/TV project (GPL-3.0).
+            The full source and the third-party notice are in the GitHub repository.</li>
+        <li>This project ships no content sources and no online parsing URLs. Every external
+            subscription and channel is configured by the user and is not provided by this
+            project.</li>
+        <li>This project offers no commercial service: no fees, no payment, no transaction of any
+            kind. It exists for personal study and technical research only.</li>
+        <li>Comply with local laws before use. The user alone is responsible for any consequence
+            of using this software, and the author is not liable.</li>
+        <li>Upstream third-party components (Thunder SDK, ForceTV, mpv, FFmpeg and others) remain
+            under their own licenses — verify their terms before redistributing.</li>
+        <li>This site shows technical and implementation details only and involves no
+            transaction; afdian is a channel for supporting the work and is unrelated to how the
+            APK is distributed.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h3>MTBOX</h3>
+        <p>An Android video and local-music toolbox, secondary-developed from FongMi/TV. Open
+           source under GPL-3.0.</p>
+      </div>
+      <div>
+        <h3>Repository</h3>
+        <ul>
+          <li><a href="https://github.com/matou1118/mtbox">Source and releases</a></li>
+          <li><a href="https://github.com/matou1118/mtbox/blob/main/CHANGELOG.md">Changelog</a></li>
+          <li><a href="https://github.com/matou1118/mtbox/blob/main/THIRD_PARTY_NOTICES.md">Third-party notices</a></li>
+          <li><a href="https://github.com/matou1118/mtbox/blob/main/SECURITY.md">Security policy</a></li>
+          <li><a href="https://github.com/matou1118/mtbox/blob/main/LICENSE">Licence (GPL-3.0)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Related</h3>
+        <ul>
+          <li><a href="https://ttread.cn/en/works/mtbox/">Official project page (EN)</a></li>
+          <li><a href="https://ttread.cn/works/mtbox/">官方项目页（中文）</a></li>
+          <li><a href="https://github.com/matou1118/ttbox">TTBOX · native HarmonyOS player</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bar">
+      <span>© 2026 码头哥 · personal work and technical research</span>
+      <span>The repository is the source of truth · <a href="../">中文</a></span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

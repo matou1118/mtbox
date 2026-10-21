@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>MTBOX · 安卓视频与本地音乐播放工具箱</title>
+<meta name="description" content="MTBOX —— 基于 FongMi/TV（GPL-3.0）二次开发的安卓视频与本地音乐播放工具箱。整包源码开源，含音乐引擎、歌词面板、音效直通与安全加固，本地解码、离线可用。">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://matou1118.github.io/mtbox/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MTBOX">
+<meta property="og:title" content="MTBOX · 安卓视频与本地音乐播放工具箱">
+<meta property="og:description" content="基于 FongMi/TV（GPL-3.0）二次开发的安卓视频与本地音乐播放工具箱，整包源码开源。">
+<meta property="og:url" content="https://matou1118.github.io/mtbox/">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="https://github.com/matou1118/mtbox/raw/main/docs/images/mtbox-1.jpg">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="./">
+      <span class="brand-mark">MT</span>
+      <span>MTBOX</span>
+    </a>
+    <nav class="nav" aria-label="主导航">
+      <a href="#features">特性</a>
+      <a href="#screens">界面</a>
+      <a href="#architecture">架构</a>
+      <a href="#build">构建</a>
+      <a href="#faq">问答</a>
+      <a href="#legal">免责声明</a>
+      <a class="lang" href="en/" hreflang="en">EN</a>
+    </nav>
+    <a class="btn" href="https://github.com/matou1118/mtbox">GitHub</a>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="wrap hero-in">
+    <div>
+      <p class="eyebrow">Android · GPL-3.0 · FongMi/TV 二次开发</p>
+      <h1>MTBOX<span class="h1-sub">安卓视频与本地音乐播放工具箱</span></h1>
+      <p class="lede">
+        基于开源的 FongMi/TV（GPL-3.0）二次开发，包名 <code>com.matou.mtbox</code>，当前版本
+        6.6.19。整包源码连同音乐引擎与构建脚本已按 GPL-3.0 开源，本地解码、离线可用，
+        不绑定任何云端账号。
+      </p>
+      <div class="hero-cta">
+        <a class="btn solid" href="https://github.com/matou1118/mtbox/releases/download/v6.6.19/mtbox-music-signed.apk">下载 v6.6.19</a>
+        <a class="btn" href="https://github.com/matou1118/mtbox">查看源码</a>
+        <a class="btn" href="https://ttread.cn/works/mtbox/">官方项目页</a>
+      </div>
+      <div class="chips">
+        <span class="chip">版本 6.6.19</span>
+        <span class="chip">GPL-3.0</span>
+        <span class="chip">com.matou.mtbox</span>
+        <span class="chip">Android 7.0+</span>
+        <span class="chip">无内容源</span>
+      </div>
+    </div>
+
+    <div class="term">
+      <div class="term-bar"><i></i><i></i><i></i><span>build.ps1</span></div>
+      <pre><b>#</b> 1) 资源 id 会漂移，每次都得重生成 R.java
+powershell -File javainject\genr.ps1 -Apk app.apk
+
+<b>#</b> 2) 编译 + 注入 + 签名（apktool 跑两遍）
+powershell -File javainject\build.ps1 -Tag music
+
+<b>→</b> mtbox-music-signed.apk</pre>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="about">
+  <div class="wrap">
+    <div class="sec-hd">
+      <span class="sec-no">关于</span>
+      <h2>这是什么</h2>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <h3>两半拼起来的整包</h3>
+        <p>反编译基线（FongMi/TV 5.6.1 → com.matou.mtbox 6.6.19）加上逐条 smali 补丁，
+           中间靠 apktool 跑两遍把资源 id 钉住。</p>
+      </div>
+      <div class="card">
+        <h3>音乐引擎直接注入</h3>
+        <p>13 个 Java 文件走 javac + d8 出 classes4.dex，丢进 work_fong/unknown 随 apktool
+           原样打进包，不回编 smali。</p>
+      </div>
+      <div class="card">
+        <h3>音效链路透明</h3>
+        <p>只有 Equalizer + BassBoost，禁用 LoudnessEnhancer；1.0 倍速不碰
+           setPlaybackParams，无损源走原生直通。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="features">
+  <div class="wrap">
+    <div class="sec-hd">
+      <span class="sec-no">特性</span>
+      <h2>它能做什么</h2>
+      <p>下面每一条都在已发布的安装包里。</p>
+    </div>
+    <div class="grid">
+      <div class="card"><span class="ftn">01</span><h3>覆盖非鸿蒙设备</h3>
+        <p>安卓端独立打包，和 TTBOX 互补 —— 家里那台安卓投影或旧平板也能用。</p></div>
+      <div class="card"><span class="ftn">02</span><h3>自持签名</h3>
+        <p>用自己保管的 keystore 出签名包，安装前可校验，不走第三方重签名。</p></div>
+      <div class="card"><span class="ftn">03</span><h3>本地导入即用</h3>
+        <p>不绑定云端账号，本地资源导入就播，断网也能用。</p></div>
+      <div class="card"><span class="ftn">04</span><h3>已开源 GPL-3.0</h3>
+        <p>整包源码连同音乐引擎与构建脚本一并上 GitHub，基底 FongMi/TV 本身也是 GPL-3.0。</p></div>
+      <div class="card"><span class="ftn">05</span><h3>音效链路直通</h3>
+        <p>只保留 Equalizer + BassBoost，不启用 LoudnessEnhancer；1.0 倍速不碰
+           setPlaybackParams，无损源走原生直通。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="screens">
+  <div class="wrap">
+    <div class="sec-hd">
+      <span class="sec-no">界面</span>
+      <h2>跑起来是什么样</h2>
+    </div>
+    <div class="shots">
+      <figure>
+        <img src="images/mtbox-1.jpg" alt="MTBOX 本地音乐 · 歌曲列表" loading="lazy" decoding="async">
+        <figcaption>本地音乐 · 歌曲列表</figcaption>
+      </figure>
+      <figure>
+        <img src="images/mtbox-2.jpg" alt="MTBOX 歌词面板 · 逐字同步" loading="lazy" decoding="async">
+        <figcaption>歌词面板 · 逐字同步</figcaption>
+      </figure>
+      <figure>
+        <img src="images/mtbox-3.jpg" alt="MTBOX 主题与播放" loading="lazy" decoding="async">
+        <figcaption>主题与播放</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="architecture">
+  <div class="wrap">
+    <div class="sec-hd">
+      <span class="sec-no">架构</span>
+      <h2>整包怎么拼起来的</h2>
+      <p>两半：反编译基线，加上注入进去的音乐引擎，中间靠 apktool 跑两遍把资源 id 钉住。</p>
+    </div>
+    <div class="grid">
+      <div class="card"><h3>work_fong 基线</h3>
+        <p>FongMi/TV 5.6.1 反编译，包名改成 com.matou.mtbox，版本抬到 6.6.19（versionCode 60619）。</p></div>
+      <div class="card"><h3>smali 补丁</h3>
+        <p>主题统一、版本显示、全屏旋转、安全加固都落在 smali 上，每一条都留了方案记录。</p></div>
+      <div class="card"><h3>javainject 音乐引擎</h3>
+        <p>13 个 Java 文件走 javac + d8 出 classes4.dex，丢进 work_fong/unknown 随 apktool 原样打进包。</p></div>
+      <div class="card"><h3>R.java 重生成</h3>
+        <p>genr.ps1 用 public.xml 加 aapt2 dump 拼资源 id 表。资源一动 id 就整表漂移，所以必须两遍出包。</p></div>
+      <div class="card"><h3>unknown 装载</h3>
+        <p>apktool 会把 work_fong/unknown 下的文件原样复制进 APK，ART 把 classes 1 到 4.dex 一起加载。</p></div>
+      <div class="card"><h3>签名</h3>
+        <p>apksigner 签 v2/v3 并 verify，keystore 自己保管，不进仓库。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="build">
+  <div class="wrap">
+    <div class="sec-hd">
+      <span class="sec-no">构建</span>
+      <h2>本地怎么出包</h2>
+      <p>四步，顺序不能反。</p>
+    </div>
+    <ol class="steps">
+      <li><span class="sn">01</span><div><h3>生成 R.java</h3>
+        <p>powershell -File javainject/genr.ps1 -Apk &lt;刚构建的.apk&gt;，资源 id 会漂移，每次都得重跑。</p></div></li>
+      <li><span class="sn">02</span><div><h3>配签名口令</h3>
+        <p>设 MTBOX_KS_PASS 与 MTBOX_KEY_PASS 两个环境变量，keystore 需要自己生成。</p></div></li>
+      <li><span class="sn">03</span><div><h3>出包</h3>
+        <p>powershell -File javainject/build.ps1 -Tag music，apktool 跑两遍，不要跳 pass 1。</p></div></li>
+      <li><span class="sn">04</span><div><h3>校验</h3>
+        <p>apksigner verify 通过、R.java 里 tabSongs 与 musicList 这些 id 对得上，才算成功。</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="sec-hd">
+      <span class="sec-no">问答</span>
+      <h2>常见问题</h2>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>为什么 apktool 要跑两遍？</summary>
+        <div>资源一动，aapt2 就会整表重排 @+id，而 R.id 是编译期常量。pass 1 拿到资源表重生成
+          R.java，pass 2 用同一份 res 出包，两遍的 id 才一致。跳过 pass 1 的结果是 findViewById
+          返回别人家的 view 或者 null，当场崩。</div>
+      </details>
+      <details>
+        <summary>音乐引擎为什么不走 smali？</summary>
+        <div>13 个 Java 文件直接 javac 加 d8 出一个 classes4.dex，丢进 work_fong/unknown 就行 ——
+          apktool 会把该目录原样复制进 APK。省掉一整轮 smali 编译，也不用碰寄存器。</div>
+      </details>
+      <details>
+        <summary>音效开了会不会失真？</summary>
+        <div>音效链只有 Equalizer 加 BassBoost，LoudnessEnhancer 是禁用的 —— 它是动态响度处理器，
+          满刻度无损源会被削波。原声预设就是 EQ 全 0 加 BassBoost 0，此时完全透明。</div>
+      </details>
+      <details>
+        <summary>锁屏和车机能控制吗？</summary>
+        <div>硬件媒体按键可用，耳机和车机的上下曲、播放暂停会转发进容器。锁屏音乐卡与控制中心媒体卡
+          不通 —— 那依赖系统主动查询 MediaSession，容器隔离挡住了，App 层无解。</div>
+      </details>
+      <details>
+        <summary>为什么没有内置源？</summary>
+        <div>刻意不内置。所有外部订阅源由使用者自行配置，本项目不提供任何内容源与在线解析地址。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="credits">
+  <div class="wrap">
+    <div class="sec-hd">
+      <span class="sec-no">致谢</span>
+      <h2>上游项目</h2>
+    </div>
+    <div class="box">
+      <ul>
+        <li><b><a href="https://github.com/FongMi/TV" target="_blank" rel="noopener">FongMi/TV</a></b>
+          <span> —— 基底，本项目基于它二次开发，GPL-3.0</span></li>
+        <li><b><a href="https://github.com/mpv-player/mpv" target="_blank" rel="noopener">mpv</a></b>
+          <span> —— 播放内核，GPL-2.0-or-later</span></li>
+        <li><b><a href="https://ffmpeg.org/" target="_blank" rel="noopener">FFmpeg</a></b>
+          <span> —— 编解码，LGPL / GPL</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="legal">
+  <div class="wrap">
+    <div class="sec-hd">
+      <span class="sec-no">说明</span>
+      <h2>免责声明</h2>
+    </div>
+    <div class="box">
+      <ol>
+        <li>本项目基于开源的 FongMi/TV（GPL-3.0）二次开发，整包源码与第三方授权声明见 GitHub 仓库。</li>
+        <li>本项目不包含任何内容源，也不提供任何在线解析地址；所有外部订阅源与频道由使用者自行配置，与本项目无关。</li>
+        <li>本项目不提供任何商业服务，不收取任何费用、不构成任何交易关系，仅供个人学习与技术研究使用。</li>
+        <li>使用前请遵守当地法律法规；因使用本软件产生的任何后果由使用者自行承担，与作者无关。</li>
+        <li>上游第三方组件（迅雷 SDK、ForceTV、mpv、FFmpeg 等）仍适用各自许可证，重新分发前请自行核实授权条款。</li>
+        <li>本站只放技术与实现细节，不涉及任何交易；爱发电是作品支持渠道，与 APK 分发无关。</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h3>MTBOX</h3>
+        <p>安卓视频与本地音乐播放工具箱。基于 FongMi/TV 二次开发，GPL-3.0 开源。</p>
+      </div>
+      <div>
+        <h3>仓库</h3>
+        <ul>
+          <li><a href="https://github.com/matou1118/mtbox">源码与 Release</a></li>
+          <li><a href="https://github.com/matou1118/mtbox/blob/main/CHANGELOG.md">更新日志</a></li>
+          <li><a href="https://github.com/matou1118/mtbox/blob/main/THIRD_PARTY_NOTICES.md">第三方授权声明</a></li>
+          <li><a href="https://github.com/matou1118/mtbox/blob/main/SECURITY.md">安全政策</a></li>
+          <li><a href="https://github.com/matou1118/mtbox/blob/main/LICENSE">许可证 GPL-3.0</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>相关</h3>
+        <ul>
+          <li><a href="https://ttread.cn/works/mtbox/">官方项目页（中文）</a></li>
+          <li><a href="https://ttread.cn/en/works/mtbox/">Official page (English)</a></li>
+          <li><a href="https://github.com/matou1118/ttbox">TTBOX · 鸿蒙原生播放器</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bar">
+      <span>© 2026 码头哥 · 个人作品与技术研究</span>
+      <span>本页内容以仓库为准 · <a href="en/">English</a></span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
