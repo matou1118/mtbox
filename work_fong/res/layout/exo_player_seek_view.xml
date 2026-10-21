@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/exo_position" android:paddingLeft="0.0dip" android:paddingRight="0.0dip" android:fontFeatureSettings="tnum" android:paddingHorizontal="0.0dip" style="@style/ExoStyledControls.TimeText.Position" />
+    <androidx.media3.ui.DefaultTimeBar android:id="@id/exo_progress" android:focusable="true" android:focusableInTouchMode="true" android:nextFocusLeft="@id/exo_progress" android:nextFocusRight="@id/exo_progress" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_marginStart="8.0dip" android:layout_marginEnd="8.0dip" />
+    <TextView android:id="@id/exo_duration" android:paddingLeft="0.0dip" android:paddingRight="0.0dip" android:fontFeatureSettings="tnum" android:paddingHorizontal="0.0dip" style="@style/ExoStyledControls.TimeText.Position" />
+</LinearLayout>

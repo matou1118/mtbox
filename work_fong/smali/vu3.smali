@@ -1,0 +1,103 @@
+.class public final Lvu3;
+.super Ljava/lang/Object;
+.source "r8-map-id-a89558d0ff538dbd6f89143b2a8691d121b126dcc6b711228acca3451ccc84d5"
+
+# interfaces
+.implements Lq62;
+
+
+# instance fields
+.field public final synthetic a:I
+
+.field public final b:Landroid/content/ContentResolver;
+
+.field public final c:Z
+
+
+# direct methods
+.method public synthetic constructor <init>(Landroid/content/ContentResolver;ZI)V
+    .locals 0
+
+    .line 1
+    iput p3, p0, Lvu3;->a:I
+
+    .line 2
+    .line 3
+    iput-object p1, p0, Lvu3;->b:Landroid/content/ContentResolver;
+
+    .line 4
+    .line 5
+    iput-boolean p2, p0, Lvu3;->c:Z
+
+    .line 6
+    .line 7
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 8
+    .line 9
+    .line 10
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a(Lna;)Lp62;
+    .locals 0
+
+    .line 1
+    iget p1, p0, Lvu3;->a:I
+
+    .line 2
+    .line 3
+    packed-switch p1, :pswitch_data_0
+
+    .line 4
+    .line 5
+    .line 6
+    new-instance p1, Lwu3;
+
+    .line 7
+    .line 8
+    invoke-direct {p1, p0}, Lwu3;-><init>(Lvu3;)V
+
+    .line 9
+    .line 10
+    .line 11
+    return-object p1
+
+    .line 12
+    :pswitch_0
+    new-instance p1, Lwu3;
+
+    .line 13
+    .line 14
+    invoke-direct {p1, p0}, Lwu3;-><init>(Lvu3;)V
+
+    .line 15
+    .line 16
+    .line 17
+    return-object p1
+
+    .line 18
+    :pswitch_1
+    new-instance p1, Lwu3;
+
+    .line 19
+    .line 20
+    invoke-direct {p1, p0}, Lwu3;-><init>(Lvu3;)V
+
+    .line 21
+    .line 22
+    .line 23
+    return-object p1
+
+    .line 24
+    nop
+
+    .line 25
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_1
+        :pswitch_0
+    .end packed-switch
+.end method

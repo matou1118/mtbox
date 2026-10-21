@@ -1,0 +1,5 @@
+.class public abstract Lle0;
+.super Ljava/lang/Object;
+
+# interfaces
+.implements Lqm;

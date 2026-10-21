@@ -1,0 +1,93 @@
+.class public final synthetic Lsb0;
+.super Ljava/lang/Object;
+.source "r8-map-id-a89558d0ff538dbd6f89143b2a8691d121b126dcc6b711228acca3451ccc84d5"
+
+# interfaces
+.implements Ldm1;
+
+
+# instance fields
+.field public final synthetic c:I
+
+.field public final synthetic h:Ljava/lang/Exception;
+
+
+# direct methods
+.method public synthetic constructor <init>(Lu5;Ljava/lang/Exception;I)V
+    .locals 0
+
+    .line 1
+    iput p3, p0, Lsb0;->c:I
+
+    .line 2
+    .line 3
+    iput-object p2, p0, Lsb0;->h:Ljava/lang/Exception;
+
+    .line 4
+    .line 5
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 6
+    .line 7
+    .line 8
+    return-void
+.end method
+
+
+# virtual methods
+.method public final invoke(Ljava/lang/Object;)V
+    .locals 1
+
+    .line 1
+    iget v0, p0, Lsb0;->c:I
+
+    .line 2
+    .line 3
+    iget-object p0, p0, Lsb0;->h:Ljava/lang/Exception;
+
+    .line 4
+    .line 5
+    check-cast p1, Lv5;
+
+    .line 6
+    .line 7
+    packed-switch v0, :pswitch_data_0
+
+    .line 8
+    .line 9
+    .line 10
+    invoke-interface {p1, p0}, Lv5;->l(Ljava/lang/Exception;)V
+
+    .line 11
+    .line 12
+    .line 13
+    return-void
+
+    .line 14
+    :pswitch_0
+    invoke-interface {p1, p0}, Lv5;->c(Ljava/lang/Exception;)V
+
+    .line 15
+    .line 16
+    .line 17
+    return-void
+
+    .line 18
+    :pswitch_1
+    invoke-interface {p1, p0}, Lv5;->j(Ljava/lang/Exception;)V
+
+    .line 19
+    .line 20
+    .line 21
+    return-void
+
+    .line 22
+    nop
+
+    .line 23
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_1
+        :pswitch_0
+    .end packed-switch
+.end method

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  音乐模块背景。目标:跟 App 主界面同一套视觉,不能变成纯黑白。
+
+  关键点:App 走的是 Theme.Material3.DynamicColors.DayNight.NoActionBar,
+  Material You 动态取色(Android 12+ 取壁纸配色)只影响强调色,
+  colorSurface 永远是中性黑白。所以纯色底就一定是"只有黑白"。
+
+  做法:
+    底色  ?attr/colorSurface          —— 和 App 窗口底色同一个属性,跟主题走
+    叠加  ?attr/colorPrimaryContainer —— M3 里专门用于"带色调表面"的低彩度色,
+                                        动态取色时跟着壁纸变,静态时是柔和主色
+
+  不要用 ?android:attr/colorBackground(框架旧属性,和 colorSurface 不是同一个颜色),
+  也不要用 ?attr/colorPrimary 直接当底色(太艳,整页会跑偏主题)。
+-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="?attr/colorSurface" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="315"
+                android:startColor="?attr/colorPrimaryContainer"
+                android:centerColor="?attr/colorSurface"
+                android:endColor="?attr/colorSurface"
+                android:type="linear" />
+        </shape>
+    </item>
+</layer-list>

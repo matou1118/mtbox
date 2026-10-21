@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.google.android.material.appbar.MaterialToolbar android:layout_width="fill_parent" android:layout_height="?actionBarSize" app:navigationIconTint="@android:color/white" app:title="@string/setting_player" app:titleTextAppearance="@style/ToolbarTextAppearance" />
+    <androidx.core.widget.NestedScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:overScrollMode="never">
+        <androidx.appcompat.widget.LinearLayoutCompat android:orientation="vertical" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:animateLayoutChanges="true" android:paddingStart="16.0dip" android:paddingEnd="16.0dip">
+            <androidx.appcompat.widget.LinearLayoutCompat android:orientation="horizontal" android:id="@id/engine" android:background="@drawable/shape_item" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <com.google.android.material.textview.MaterialTextView android:textSize="16.0sp" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/player_engine" android:layout_marginEnd="16.0dip" />
+                <com.google.android.material.textview.MaterialTextView android:textSize="16.0sp" android:textColor="@color/white" android:gravity="end" android:id="@id/engineText" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat android:orientation="horizontal" android:id="@id/decode" android:background="@drawable/shape_item" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
+                <com.google.android.material.textview.MaterialTextView android:textSize="16.0sp" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/player_decode_setting" android:layout_marginEnd="16.0dip" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat android:orientation="horizontal" android:id="@id/adblock" android:background="@drawable/shape_item" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
+                <com.google.android.material.textview.MaterialTextView android:textSize="16.0sp" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/player_adblock" android:layout_marginEnd="16.0dip" />
+                <com.google.android.material.textview.MaterialTextView android:textSize="16.0sp" android:textColor="@color/white" android:gravity="end" android:id="@id/adblockText" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat android:orientation="horizontal" android:id="@id/mpvConf" android:background="@drawable/shape_item" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
+                <com.google.android.material.textview.MaterialTextView android:textSize="16.0sp" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/player_mpv_conf" android:layout_marginEnd="16.0dip" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat android:orientation="horizontal" android:id="@id/mpvGpuNext" android:background="@drawable/shape_item" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
+                <com.google.android.material.textview.MaterialTextView android:textSize="16.0sp" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/player_mpv_gpu_next" android:layout_marginEnd="16.0dip" />
+                <com.google.android.material.textview.MaterialTextView android:textSize="16.0sp" android:textColor="@color/white" android:gravity="end" android:id="@id/mpvGpuNextText" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat android:orientation="horizontal" android:id="@id/mpvVulkan" android:background="@drawable/shape_item" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
+                <com.google.android.material.textview.MaterialTextView android:textSize="16.0sp" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/player_mpv_vulkan" android:layout_marginEnd="16.0dip" />
+                <com.google.android.material.textview.MaterialTextView android:textSize="16.0sp" android:textColor="@color/white" android:gravity="end" android:id="@id/mpvVulkanText" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat android:orientation="horizontal" android:id="@id/render" android:background="@drawable/shape_item" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
+                <com.google.android.material.textview.MaterialTextView android:textSize="16.0sp" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/player_render" android:layout_marginEnd="16.0dip" />
+                <com.google.android.material.textview.MaterialTextView android:textSize="16.0sp" android:textColor="@color/white" android:gravity="end" android:id="@id/renderText" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat android:orientation="horizontal" android:id="@id/scale" android:background="@drawable/shape_item" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
+                <com.google.android.material.textview.MaterialTextView android:textSize="16.0sp" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/player_scale" android:layout_marginEnd="16.0dip" />
+                <com.google.android.material.textview.MaterialTextView android:textSize="16.0sp" android:textColor="@color/white" android:gravity="end" android:id="@id/scaleText" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat android:orientation="horizontal" android:id="@id/background" android:background="@drawable/shape_item" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
+                <com.google.android.material.textview.MaterialTextView android:textSize="16.0sp" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/player_background" android:layout_marginEnd="16.0dip" />
+                <com.google.android.material.textview.MaterialTextView android:textSize="16.0sp" android:textColor="@color/white" android:gravity="end" android:id="@id/backgroundText" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat android:orientation="horizontal" android:id="@id/buffer" android:background="@drawable/shape_item" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
+                <com.google.android.material.textview.MaterialTextView android:textSize="16.0sp" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/player_buffer" android:layout_marginEnd="16.0dip" />
+                <com.google.android.material.textview.MaterialTextView android:textSize="16.0sp" android:textColor="@color/white" android:gravity="end" android:id="@id/bufferText" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                <com.google.android.material.textview.MaterialTextView android:textSize="16.0sp" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/times" android:layout_marginStart="4.0dip" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat android:orientation="horizontal" android:id="@id/preload" android:background="@drawable/shape_item" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
+                <com.google.android.material.textview.MaterialTextView android:textSize="16.0sp" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/player_preload_setting" android:layout_marginEnd="16.0dip" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat android:orientation="horizontal" android:id="@id/ua" android:background="@drawable/shape_item" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
+                <com.google.android.material.textview.MaterialTextView android:textSize="16.0sp" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/player_ua" android:layout_marginEnd="16.0dip" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+</androidx.appcompat.widget.LinearLayoutCompat>

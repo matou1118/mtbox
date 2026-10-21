@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.appcompat.widget.LinearLayoutCompat android:gravity="center_vertical" android:orientation="horizontal" android:paddingLeft="24.0dip" android:paddingTop="24.0dip" android:paddingRight="24.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingHorizontal="24.0dip">
+        <com.google.android.material.textview.MaterialTextView android:textSize="16.0sp" android:textColor="?colorOnSurface" android:id="@id/title" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/player_engine" android:layout_weight="1.0" />
+        <androidx.appcompat.widget.AppCompatImageView android:id="@id/debug" android:background="?selectableItemBackgroundBorderless" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_action_debug" android:contentDescription="@string/player_debug" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    <androidx.appcompat.widget.LinearLayoutCompat android:orientation="horizontal" android:paddingBottom="24.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="24.0dip" android:paddingEnd="24.0dip">
+        <com.google.android.material.textview.MaterialTextView android:textSize="14.0sp" android:textColor="@color/selector_control" android:id="@id/exo" android:background="@drawable/shape_accent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/play_exo" android:layout_marginEnd="8.0dip" />
+        <com.google.android.material.textview.MaterialTextView android:textSize="14.0sp" android:textColor="@color/selector_control" android:id="@id/mpv" android:background="@drawable/shape_accent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/play_mpv" android:layout_marginEnd="8.0dip" />
+        <com.google.android.material.textview.MaterialTextView android:textSize="14.0sp" android:textColor="@color/selector_control" android:id="@id/other" android:background="@drawable/shape_accent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/play_other" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.appcompat.widget.LinearLayoutCompat>

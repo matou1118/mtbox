@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- parent 必须是 App 自己的 AppCompat/Material3 主题。
+         不能用平台的 Theme.Material:LinearLayoutCompat / MaterialTextView /
+         AppCompatImageView 构造时会读 ?selectableItemBackgroundBorderless 等
+         AppCompat 属性,平台主题里没有,会直接 InflateException。 -->
+    <style name="Theme.Music" parent="@style/Theme.App">
+        <item name="android:windowBackground">@drawable/music_bg</item>
+    </style>
+    <style name="MusicTool">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginStart">2.0dip</item>
+        <item name="android:layout_marginEnd">2.0dip</item>
+        <item name="android:minWidth">0.0dip</item>
+        <item name="android:background">@drawable/music_tool_btn</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingStart">10.0dip</item>
+        <item name="android:paddingEnd">10.0dip</item>
+        <item name="android:textColor">@color/selector_control</item>
+        <item name="android:textSize">14.0sp</item>
+    </style>
+</resources>

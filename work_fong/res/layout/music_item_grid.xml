@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?selectableItemBackground"
+    android:orientation="vertical"
+    android:padding="8.0dip">
+
+    <androidx.appcompat.widget.AppCompatImageView
+android:id="@+id/gridCover"
+            android:layout_width="fill_parent"
+            android:layout_height="140.0dip"
+            android:background="@drawable/music_cover_placeholder"
+            android:clipToOutline="true"
+            android:contentDescription="@string/music_album"
+            android:scaleType="centerCrop" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/gridTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6.0dip"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="13.0sp" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/gridSub"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="11.0sp" />
+</androidx.appcompat.widget.LinearLayoutCompat>

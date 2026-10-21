@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.appcompat.widget.LinearLayoutCompat android:gravity="center_vertical" android:orientation="horizontal" android:paddingLeft="24.0dip" android:paddingTop="24.0dip" android:paddingRight="24.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingHorizontal="24.0dip">
+        <com.google.android.material.textview.MaterialTextView android:textSize="16.0sp" android:textColor="?colorOnSurface" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/detail_episode" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    <com.google.android.material.tabs.TabLayout android:id="@id/tabs" android:background="@color/transparent" android:layout_width="fill_parent" android:layout_height="32.0dip" app:tabContentStart="20.0dip" app:tabIndicatorAnimationMode="elastic" app:tabIndicatorColor="?colorPrimary" app:tabIndicatorFullWidth="false" app:tabIndicatorHeight="2.0dip" app:tabMode="scrollable" app:tabSelectedTextColor="?colorPrimary" app:tabTextColor="?colorOnSurfaceVariant" />
+    <androidx.viewpager2.widget.ViewPager2 android:id="@id/pager" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</androidx.appcompat.widget.LinearLayoutCompat>

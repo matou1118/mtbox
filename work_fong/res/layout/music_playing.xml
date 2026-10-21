@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/playRoot"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/music_bg"
+    android:fitsSystemWindows="true">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/playLayerMain"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <!-- 顶栏 -->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="fill_parent"
+            android:layout_height="52.0dip"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="4.0dip"
+            android:paddingEnd="4.0dip">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/playBack"
+                android:layout_width="42.0dip"
+                android:layout_height="42.0dip"
+                android:background="@drawable/music_glyph"
+                android:contentDescription="@string/music_back"
+                android:padding="9.0dip"
+                android:src="@drawable/ic_music_back"
+                android:tint="?attr/colorOnSurface" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/playHeader"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@string/music_now_playing"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="15.0sp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/playMore"
+                android:layout_width="42.0dip"
+                android:layout_height="42.0dip"
+                android:background="@drawable/music_glyph"
+                android:contentDescription="@string/music_more"
+                android:padding="9.0dip"
+                android:src="@drawable/ic_music_more"
+                android:tint="?attr/colorOnSurface" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <!-- 封面 / 歌词 共用一块区域:点封面出歌词,点歌词回封面 -->
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0.0dip"
+            android:layout_weight="1.0"
+            android:paddingStart="26.0dip"
+            android:paddingTop="4.0dip"
+            android:paddingEnd="26.0dip"
+            android:paddingBottom="4.0dip">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/playCover"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/music_cover_round"
+                android:clipToOutline="true"
+                android:clickable="true"
+                android:contentDescription="@string/music_album"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:scaleType="fitCenter"
+                android:src="@drawable/music_cover_placeholder" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/coverHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginBottom="6.0dip"
+                android:alpha="0.55"
+                android:text="@string/music_tap_lyric"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="11.0sp" />
+        </FrameLayout>
+
+        <!-- 歌名 / 歌手 -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/playTitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="26.0dip"
+            android:layout_marginEnd="26.0dip"
+            android:ellipsize="marquee"
+            android:gravity="center"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:maxLines="1"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="18.0sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/playArtist"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="26.0dip"
+            android:layout_marginTop="2.0dip"
+            android:layout_marginEnd="26.0dip"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="12.0sp" />
+
+        <!-- 进度 -->
+        <SeekBar
+            android:id="@+id/playSeek"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22.0dip"
+            android:layout_marginTop="6.0dip"
+            android:layout_marginEnd="22.0dip" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="26.0dip"
+            android:paddingEnd="26.0dip">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/playPos"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:text="0:00"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="11.0sp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/playDur"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="end"
+                android:text="0:00"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="11.0sp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <!-- 主控:只留 收藏 / 上一首 / 播放 / 下一首 -->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="fill_parent"
+            android:layout_height="68.0dip"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/playFav"
+                android:layout_width="46.0dip"
+                android:layout_height="46.0dip"
+                android:layout_marginEnd="26.0dip"
+                android:background="@drawable/music_glyph"
+                android:contentDescription="@string/music_fav"
+                android:padding="11.0dip"
+                android:src="@drawable/ic_music_fav"
+                android:tint="?attr/colorOnSurface" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/playPrev"
+                android:layout_width="48.0dip"
+                android:layout_height="48.0dip"
+                android:layout_marginEnd="14.0dip"
+                android:background="@drawable/music_glyph"
+                android:contentDescription="@string/music_prev"
+                android:padding="9.0dip"
+                android:src="@drawable/ic_music_prev"
+                android:tint="?android:attr/textColorPrimary" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/playToggle"
+                android:layout_width="64.0dip"
+                android:layout_height="64.0dip"
+                android:background="@drawable/music_primary_btn"
+                android:contentDescription="@string/music_play"
+                android:padding="15.0dip"
+                android:src="@drawable/ic_music_play"
+                android:tint="?attr/colorPrimary" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/playNext"
+                android:layout_width="48.0dip"
+                android:layout_height="48.0dip"
+                android:layout_marginStart="14.0dip"
+                android:background="@drawable/music_glyph"
+                android:contentDescription="@string/music_next"
+                android:padding="9.0dip"
+                android:src="@drawable/ic_music_next"
+                android:tint="?android:attr/textColorPrimary" />
+
+            <Space
+                android:layout_width="46.0dip"
+                android:layout_height="46.0dip"
+                android:layout_marginStart="26.0dip" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <!-- 底部工具栏:整体居中 -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="42.0dip"
+            android:fillViewport="true"
+            android:scrollbars="none">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/playTools"
+            android:layout_width="wrap_content"
+            android:layout_height="42.0dip"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/btnQueue"
+                style="@style/MusicTool"
+                android:text="@string/music_queue" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/btnMode"
+                style="@style/MusicTool"
+                android:text="@string/music_mode_order"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/btnFetch"
+                style="@style/MusicTool"
+                android:text="@string/music_fetch" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/btnTimer"
+                style="@style/MusicTool"
+                android:text="@string/music_timer" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        </HorizontalScrollView>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <com.matou.mtbox.music.LyricView
+        android:id="@+id/playLyric"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:paddingStart="8.0dip"
+        android:paddingTop="8.0dip"
+        android:paddingEnd="8.0dip"
+        android:paddingBottom="8.0dip"
+        android:visibility="gone" />
+
+    <ListView
+        android:id="@+id/playQueue"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:background="?android:attr/colorBackground"
+        android:divider="@null"
+        android:dividerHeight="0.0dip"
+        android:scrollbarStyle="outsideOverlay"
+        android:visibility="gone" />
+</FrameLayout>
