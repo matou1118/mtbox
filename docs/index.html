@@ -93,7 +93,7 @@ powershell -File javainject\build.ps1 -Tag music
       </div>
       <div class="card">
         <h3>音乐引擎直接注入</h3>
-        <p>13 个 Java 文件走 javac + d8 出 classes4.dex，丢进 work_fong/unknown 随 apktool
+        <p>13 个手写 Java 文件走 javac + d8 出 classes4.dex，丢进 work_fong/unknown 随 apktool
            原样打进包，不回编 smali。</p>
       </div>
       <div class="card">
@@ -164,7 +164,7 @@ powershell -File javainject\build.ps1 -Tag music
       <div class="card"><h3>smali 补丁</h3>
         <p>主题统一、版本显示、全屏旋转、安全加固都落在 smali 上，每一条都留了方案记录。</p></div>
       <div class="card"><h3>javainject 音乐引擎</h3>
-        <p>13 个 Java 文件走 javac + d8 出 classes4.dex，丢进 work_fong/unknown 随 apktool 原样打进包。</p></div>
+        <p>13 个手写 Java 文件走 javac + d8 出 classes4.dex，丢进 work_fong/unknown 随 apktool 原样打进包。</p></div>
       <div class="card"><h3>R.java 重生成</h3>
         <p>genr.ps1 用 public.xml 加 aapt2 dump 拼资源 id 表。资源一动 id 就整表漂移，所以必须两遍出包。</p></div>
       <div class="card"><h3>unknown 装载</h3>
@@ -210,7 +210,7 @@ powershell -File javainject\build.ps1 -Tag music
       </details>
       <details>
         <summary>音乐引擎为什么不走 smali？</summary>
-        <div>13 个 Java 文件直接 javac 加 d8 出一个 classes4.dex，丢进 work_fong/unknown 就行 ——
+        <div>13 个手写 Java 文件直接 javac 加 d8 出一个 classes4.dex，丢进 work_fong/unknown 就行 ——
           apktool 会把该目录原样复制进 APK。省掉一整轮 smali 编译，也不用碰寄存器。</div>
       </details>
       <details>
@@ -293,6 +293,7 @@ powershell -File javainject\build.ps1 -Tag music
         <ul>
           <li><a href="https://ttread.cn/works/mtbox/">官方项目页（中文）</a></li>
           <li><a href="https://ttread.cn/en/works/mtbox/">Official page (English)</a></li>
+          <li><a href="https://atomgit.com/matou118/MTBOX">AtomGit 镜像仓库</a></li>
           <li><a href="https://github.com/matou1118/ttbox">TTBOX · 鸿蒙原生播放器</a></li>
         </ul>
       </div>

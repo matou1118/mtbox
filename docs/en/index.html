@@ -93,7 +93,7 @@ powershell -File javainject\build.ps1 -Tag music
       </div>
       <div class="card">
         <h3>The music engine is injected</h3>
-        <p>Thirteen Java files through javac and d8 produce a classes4.dex, dropped into
+        <p>Thirteen hand-written Java files through javac and d8 produce a classes4.dex, dropped into
            work_fong/unknown and copied verbatim into the APK — no smali round-trip.</p>
       </div>
       <div class="card">
@@ -171,7 +171,7 @@ powershell -File javainject\build.ps1 -Tag music
         <p>Unified theming, the version display, fullscreen rotation and the security hardening all
            live in smali, each one with a written-up plan.</p></div>
       <div class="card"><h3>The javainject music engine</h3>
-        <p>Thirteen Java files through javac and d8 produce a classes4.dex, dropped into
+        <p>Thirteen hand-written Java files through javac and d8 produce a classes4.dex, dropped into
            work_fong/unknown and copied verbatim into the APK by apktool.</p></div>
       <div class="card"><h3>R.java regeneration</h3>
         <p>genr.ps1 assembles the resource id table from public.xml and an aapt2 dump. Touch res/
@@ -225,7 +225,7 @@ powershell -File javainject\build.ps1 -Tag music
       </details>
       <details>
         <summary>Why not write the music engine in smali?</summary>
-        <div>Thirteen Java files go through javac and d8 into a classes4.dex, which goes straight
+        <div>Thirteen hand-written Java files go through javac and d8 into a classes4.dex, which goes straight
           into work_fong/unknown — apktool copies that directory into the APK verbatim. It saves a
           whole round of smali compilation and never touches a register.</div>
       </details>
@@ -322,6 +322,7 @@ powershell -File javainject\build.ps1 -Tag music
         <ul>
           <li><a href="https://ttread.cn/en/works/mtbox/">Official project page (EN)</a></li>
           <li><a href="https://ttread.cn/works/mtbox/">官方项目页（中文）</a></li>
+          <li><a href="https://atomgit.com/matou118/MTBOX">AtomGit mirror</a></li>
           <li><a href="https://github.com/matou1118/ttbox">TTBOX · native HarmonyOS player</a></li>
         </ul>
       </div>

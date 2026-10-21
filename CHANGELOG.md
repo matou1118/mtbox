@@ -120,7 +120,7 @@ baseline. Every entry below maps to a concrete smali change and its verification
   pass 2 用同一份 `res/` 出包。资源一动 `@+id` 整表漂移，而 `R.id.*` 是编译期常量，
   跳过 pass 1 会让 `findViewById` 返回别人家的 view 或 null，当场崩
 - `javainject/genr.ps1`：由 `public.xml` + `aapt2 dump` 拼出资源 id 表
-- 音乐引擎（`javainject/src/com/matou/mtbox/music/`，13 个 Java 文件）：
+- 音乐引擎（`javainject/src/com/matou/mtbox/music/`，13 个手写 Java 文件，外加自动生成的 R.java）：
   `javac` + `d8` 出 `classes4.dex`，塞进 `work_fong/unknown/` 由 apktool 原样打进包，
   不回编 smali
 - 音频链路只有 `Equalizer` + `BassBoost`，**禁用 `LoudnessEnhancer`**，
@@ -267,7 +267,8 @@ User-tested: fullscreen intact, final form confirmed.
   skipping pass 1 makes `findViewById` return somebody else's view or null
 - `javainject/genr.ps1`: assembles the resource id table from `public.xml` plus an
   `aapt2 dump`
-- Music engine (`javainject/src/com/matou/mtbox/music/`, 13 Java files): `javac` and
+- Music engine (`javainject/src/com/matou/mtbox/music/`, 13 hand-written Java files plus the
+  generated R.java): `javac` and
   `d8` produce a `classes4.dex` that is dropped into `work_fong/unknown/` and copied
   verbatim into the APK by apktool — no smali round-trip
 - The audio chain is `Equalizer` + `BassBoost` only; **`LoudnessEnhancer` is never
