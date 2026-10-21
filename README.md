@@ -12,8 +12,9 @@
 
 [中文](#中文) · [English](#english)
 
-**官方项目页 / Project page**: <https://ttread.cn/works/mtbox/>
-（中文 · [English](https://ttread.cn/en/works/mtbox/) · bilingual）
+**官方项目页 / Project page**: <https://matou1118.github.io/mtbox/>
+（中文 · [English](https://matou1118.github.io/mtbox/en/) · bilingual）
+站内页 / On-site: [中文](https://ttread.cn/works/mtbox/) · [English](https://ttread.cn/en/works/mtbox/)
 
 </div>
 
@@ -29,7 +30,7 @@ MTBOX 是基于 **FongMi/TV（GPL-3.0）** 二次开发的安卓播放工具箱�
 当前版本 **6.6.19**（`versionCode 60619`）。它分两部分：
 
 - **`work_fong/`** —— FongMi/TV 5.6.1 反编译基线 + 逐条打好的 smali 补丁
-- **`javainject/`** —— 本次新增的**本地音乐播放引擎**（13 个 Java 文件），以 `classes4.dex`
+- **`javainject/`** —— 本次新增的**本地音乐播放引擎**（15 个 Java 文件），以 `classes4.dex`
   直接注入，不走 smali 回编
 
 **它不做的事**：不内置任何内容源、不提供任何在线解析地址、不收集任何用户数据。
@@ -43,7 +44,7 @@ MTBOX 是基于 **FongMi/TV（GPL-3.0）** 二次开发的安卓播放工具箱�
 
 ### 特性
 
-- **本地音乐引擎** —— 扫描本地音频，`MediaSession` + `MediaStyle` 通知控制，锁屏 / 控制中心可用
+- **本地音乐引擎** —— 扫描本地音频，`MediaSession` + `MediaStyle` 通知控制，硬件媒体键可用（锁屏卡片受卓易通容器隔离不可用）
 - **网易云搜索与歌词** —— 歌名搜索、LRC 歌词实时同步、封面降级加载
 - **音效链路透明** —— 只有 `Equalizer` + `BassBoost`，**不启用 `LoudnessEnhancer`**，1.0 倍速
   不调 `setPlaybackParams`，FLAC 走原生直通
@@ -115,7 +116,7 @@ The repository has two halves:
 
 - **`work_fong/`** — the decompiled FongMi/TV 5.6.1 baseline plus the smali patches applied
   on top of it
-- **`javainject/`** — the **local music engine** added in this project (13 Java files),
+- **`javainject/`** — the **local music engine** added in this project (15 Java files),
   injected straight in as `classes4.dex` with no smali round-trip
 
 **What it does not do**: it ships no content sources, no online parsing URLs, and collects
@@ -124,7 +125,7 @@ no user data. Every external subscription is configured by the user.
 ### Features
 
 - **Local music engine** — scans local audio, controlled via `MediaSession` + `MediaStyle`
-  notification, works from the lock screen and the control centre
+  notification, hardware media keys work (lock-screen cards are blocked by the Zhuoyitong container)
 - **NetEase search & lyrics** — track search, synced LRC lyrics, cover art with fallback
 - **Transparent audio path** — only `Equalizer` + `BassBoost`; `LoudnessEnhancer` is
   never enabled and `setPlaybackParams` is never touched at 1.0×, so FLAC stays bit-perfect
