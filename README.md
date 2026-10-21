@@ -12,8 +12,8 @@
 
 [中文](#中文) · [English](#english)
 
-**官方项目页 / Project page**: <https://ttread.cn/mtbox/>
-（中英双语 · bilingual）
+**官方项目页 / Project page**: <https://ttread.cn/works/mtbox/>
+（中文 · [English](https://ttread.cn/en/works/mtbox/) · bilingual）
 
 </div>
 
